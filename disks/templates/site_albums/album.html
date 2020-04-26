@@ -1,0 +1,38 @@
+{% extends "home.html" %}
+
+{% block title %}{{album.titre}}{% endblock %}
+
+{% block album %}
+<h1 align="center">{{ album.Title }}</h1><br>
+<h4 align="left" class="infos"><strong>Artiste: </strong>{{ album.artist.Name }}</h4><br>
+<h5>Pistes</h5>
+
+
+<table class="table">
+
+    <thead>
+
+    <tr>
+        <th>Name</th>
+        <th>Composer</th>
+        <th>Length</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for track in tracks %}
+    <tr>
+        <td>{{ track.Name }}</td>
+        <td>{{ track.Composer }}</td>
+        <td>
+            <span style="white-space: nowrap">{{ track.Milliseconds }} ms</span></td>
+        <td>
+            <span style="white-space: nowrap">{{ track.UnitPrice }} $</span></td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+<p><a href="{% url 'home'%}">Return</a></p>
+{% endblock %}
